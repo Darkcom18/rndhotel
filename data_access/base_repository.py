@@ -9,7 +9,10 @@ class BaseRepository:
         credentials = Credentials.from_service_account_info(service_account_info, scopes=scopes)
 
         self.gc = gspread.authorize(credentials)
-        self.sheet_file = self.gc.open(Config.get_gspread_sheet_name())
+
+        # Dùng open_by_key (theo ID)
+        sheet_id = Config.get_gspread_sheet_id()
+        self.sheet_file = self.gc.open_by_key(sheet_id)
 
     def get_worksheet(self, name: str):
         return self.sheet_file.worksheet(name)
