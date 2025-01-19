@@ -1,20 +1,11 @@
 import streamlit as st
 from services.auth_service import AuthService
-from pages import (
-    admin_dashboard,
-    workspace_dashboard,
-    rooms_page,
-    menu_page,
-    orders_page,
-    chat_page,
-    end_user_order,
-    end_user_chat
-)
+from pages import admin_dashboard,workspace_dashboard,rooms_page,menu_page,orders_page,chat_page,end_user_order,end_user_chat
+
 from core.constants import Role
 
 def main():
     st.set_page_config(page_title="Hotel Platform", layout="wide")
-
     # Kiểm tra query param ?page=end_user_order / end_user_chat
     query_params = st.experimental_get_query_params()
     page_param = query_params.get("page", [None])[0]
